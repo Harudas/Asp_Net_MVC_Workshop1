@@ -1,0 +1,117 @@
+﻿@model Book_final.Models.Book_data
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Book_data</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.BOOK_ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BOOK_NAME, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BOOK_NAME, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_AUTHOR, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BOOK_AUTHOR, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BOOK_AUTHOR, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_PUBLISHER, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BOOK_PUBLISHER, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BOOK_PUBLISHER, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_NOTE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BOOK_NOTE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BOOK_NOTE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_BOUGHT_DATE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BOOK_BOUGHT_DATE,
+            new { htmlAttributes = new {@class = "form-control", type = "date", required = "required" } })
+            @Html.ValidationMessageFor(model => model.BOOK_BOUGHT_DATE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">書籍類別</label>
+        <div class="col-md-10">
+            <select id="BOOK_CLASS_NAME" name="BOOK_CLASS_NAME" class="form-control">
+                <option value="哲學類" @(Model.BOOK_CLASS_NAME == "哲學類" ? "selected" : "")>哲學類</option>
+                <option value="宗教類" @(Model.BOOK_CLASS_NAME == "宗教類" ? "selected" : "")>宗教類</option>
+                <option value="科學類" @(Model.BOOK_CLASS_NAME == "科學類" ? "selected" : "")>科學類</option>
+                <option value="醫藥類" @(Model.BOOK_CLASS_NAME == "醫藥類" ? "selected" : "")>醫藥類</option>
+                <option value="程式類" @(Model.BOOK_CLASS_NAME == "程式類" ? "selected" : "")>程式類</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">借閱狀態</label>
+        <div class="col-md-10">
+            <select id="BOOK_STATUS" name="BOOK_STATUS" class="form-control">
+                <option value="可以借出" @(Model.BOOK_CLASS_NAME == "可以借出" ? "selected" : "")>可以借出</option>
+                <option value="已借出"  @(Model.BOOK_CLASS_NAME == "已借出" ? "selected" : "")>已借出</option>
+                <option value="不可借出"  @(Model.BOOK_CLASS_NAME == "不可借出" ? "selected" : "")>不可借出</option>
+                <option value="已借出(未領)"  @(Model.BOOK_CLASS_NAME == "未借出" ? "selected" : "")>已借出(未領)</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">借閱人</label>
+        <div class="col-md-10">
+            <select id="BOOK_KEEPER" name="BOOK_KEEPER" class="form-control">
+                <option value="小明" @(Model.BOOK_CLASS_NAME == "小明" ? "selected" : "")>小明</option>
+                <option value="中明" @(Model.BOOK_CLASS_NAME == "中明" ? "selected" : "")>中明</option>
+                <option value="大明" @(Model.BOOK_CLASS_NAME == "大明" ? "selected" : "")>大明</option>
+                <option value="無借閱人" @(Model.BOOK_CLASS_NAME == "無借閱人" ? "selected" : "")>無借閱人</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="存檔" class="btn btn-warning" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

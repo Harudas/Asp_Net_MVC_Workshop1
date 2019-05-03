@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "SearchOrder";
+
+}
+@using (Html.BeginForm("SearchOrder", "bs"))
+{
+
+    <h2>SearchOrder</h2>
+    <table>
+        <tr>
+            <td>訂單編號</td>
+            <td><input type="text" id="txtOrderID" name="name2" /></td>
+        </tr>
+        <tr>
+            <td>負責業務</td>
+            <td><input type="text" id="txtEmpID" name="age2" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="查詢" /></td>
+        </tr>
+    </table>
+    <p>
+        Your Name : @ViewBag.Name<br />
+        Your Name : @ViewBag.Age
+    </p>
+}

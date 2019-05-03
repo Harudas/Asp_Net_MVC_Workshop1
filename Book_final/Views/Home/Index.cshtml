@@ -1,0 +1,79 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Book_final.Models.Book_data>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-info">新增書籍</a>
+    <a href="@Url.Action("search")" class="btn btn-success">搜尋書籍</a>
+</p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_NAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_CLASS_NAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_AUTHOR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_BOUGHT_DATE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_PUBLISHER)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_NOTE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_STATUS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BOOK_KEEPER)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_CLASS_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_AUTHOR)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_BOUGHT_DATE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_PUBLISHER)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_NOTE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_STATUS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BOOK_KEEPER)
+                    </td>
+                    <td>
+                        <a href="@Url.Action( "Edit", new { Book_id =item.BOOK_ID })" class="btn btn-warning">編輯</a>
+                        <a onclick="return confirm('確定刪除嗎?');" href="@Url.Action( "Delete", new { aid = item.BOOK_ID })" class="btn btn-danger">刪除</a>
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+   @Html.PagedListPager(Model,page=>Url.Action("Index",new {page}))
