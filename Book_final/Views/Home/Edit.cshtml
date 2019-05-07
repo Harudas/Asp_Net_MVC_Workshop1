@@ -78,10 +78,10 @@
         <label class="control-label col-md-2">借閱狀態</label>
         <div class="col-md-10">
             <select id="BOOK_STATUS" name="BOOK_STATUS" class="form-control">
-                <option value="可以借出" @(Model.BOOK_CLASS_NAME == "可以借出" ? "selected" : "")>可以借出</option>
-                <option value="已借出"  @(Model.BOOK_CLASS_NAME == "已借出" ? "selected" : "")>已借出</option>
-                <option value="不可借出"  @(Model.BOOK_CLASS_NAME == "不可借出" ? "selected" : "")>不可借出</option>
-                <option value="已借出(未領)"  @(Model.BOOK_CLASS_NAME == "未借出" ? "selected" : "")>已借出(未領)</option>
+                <option value="可以借出" @(Model.BOOK_STATUS == "可以借出" ? "selected" : "")>可以借出</option>
+                <option value="已借出"  @(Model.BOOK_STATUS == "已借出" ? "selected" : "")>已借出</option>
+                <option value="不可借出"  @(Model.BOOK_STATUS == "不可借出" ? "selected" : "")>不可借出</option>
+                <option value="未借出" @(Model.BOOK_STATUS == "未借出" ? "selected" : "")>未借出</option>
             </select>
         </div>
     </div>
@@ -91,12 +91,13 @@
         <label class="control-label col-md-2">借閱人</label>
         <div class="col-md-10">
             <select id="BOOK_KEEPER" name="BOOK_KEEPER" class="form-control">
-                <option value="小明" @(Model.BOOK_CLASS_NAME == "小明" ? "selected" : "")>小明</option>
-                <option value="中明" @(Model.BOOK_CLASS_NAME == "中明" ? "selected" : "")>中明</option>
-                <option value="大明" @(Model.BOOK_CLASS_NAME == "大明" ? "selected" : "")>大明</option>
-                <option value="無借閱人" @(Model.BOOK_CLASS_NAME == "無借閱人" ? "selected" : "")>無借閱人</option>
+
+                <option value="Andy" @(Model.BOOK_KEEPER == "Andy" ? "selected" : "")>Andy</option>
+                <option value="Allen" @(Model.BOOK_KEEPER == "Allen" ? "selected" : "")>Allen</option>
+                <option value="Aki" @(Model.BOOK_KEEPER == "Aki" ? "selected" : "")>Aki</option>
+
             </select>
-        </div>
+</div>
     </div>
 
 
